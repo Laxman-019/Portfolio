@@ -58,7 +58,7 @@ export default function Hero() {
             View Projects
           </a>
           <a
-            href="mailto:lxmnchourasia@gmail.com"
+            href="#contact"
             className="border border-[rgba(0,210,255,0.25)] text-[#e8eef8] font-mono text-xs
                        tracking-widest uppercase px-8 py-3.5 transition-all duration-200
                        hover:border-[#00d2ff] hover:text-[#00d2ff] hover:-translate-y-0.5"
