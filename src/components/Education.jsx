@@ -1,55 +1,22 @@
-import { SectionHeader } from './Skills'
-
-const education = [
-  {
-    year: '2022 — 2026',
-    degree: 'B.Tech in Computer Science & Engineering',
-    school: 'Ajay Binay Institute of Technology, Cuttack',
-  },
-  {
-    year: '2020 — 2022',
-    degree: '12th Science',
-    school: 'Odisha Science College, Cuttack',
-  },
-  {
-    year: '2018 — 2020',
-    degree: '10th Standard',
-    school: 'Saraswati Shishu Vidya Mandir, Agrahat',
-  },
-]
+import SectionHeader from './SectionHeader'
+import { education } from '../data/content'
 
 export default function Education() {
   return (
-    <section id="education">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-20 py-24">
-        <SectionHeader tag="My Academic Path" title="Education" />
+    <section id="education" className="px-5 py-24 sm:px-8">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader title="Education" intro="My academic path, most recent first." />
 
-        
-        <div className="relative pl-6 sm:pl-10">
-          
-          <div
-            className="absolute left-0 top-0 bottom-0 w-px"
-            style={{ background: 'linear-gradient(to bottom, #00d2ff, transparent)' }}
-          />
-
-          {education.map((e, i) => (
-            <div
-              key={i}
-              className="reveal relative pl-8 sm:pl-12 pb-12 last:pb-0"
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              
-              <div
-                className="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#00d2ff]"
-                style={{ boxShadow: '0 0 16px #00d2ff' }}
-              />
-
-              <p className="font-mono text-[11px] text-[#00d2ff] tracking-widest mb-1.5">{e.year}</p>
-              <h3 className="font-display font-bold text-lg sm:text-xl text-[#e8eef8] mb-1">{e.degree}</h3>
-              <p className="text-muted text-sm">{e.school}</p>
-            </div>
+        <ol className="relative ml-2 border-l border-line">
+          {education.map(e => (
+            <li key={e.degree} className="relative pb-12 pl-8 last:pb-0">
+              <span className="absolute -left-1.25 top-2 size-2.5 rounded-full bg-accent" />
+              <p className="text-sm text-muted">{e.year}</p>
+              <h3 className="mt-1 font-display text-xl font-bold sm:text-2xl">{e.degree}</h3>
+              <p className="mt-1 text-muted">{e.school}</p>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )

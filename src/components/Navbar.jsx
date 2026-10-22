@@ -1,101 +1,81 @@
 import { useState, useEffect } from 'react'
-
-const links = [
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
-]
+import { FaBars, FaTimes } from 'react-icons/fa'
+import { navLinks, profile } from '../data/content'
+import ThemeToggle from './ThemeToggle'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [active,  setActive] = useState('')
+  const [active, setActive] = useState('')
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20)
-      const sections = document.querySelectorAll('section[id]')
-      sections.forEach(sec => {
-        if (window.scrollY >= sec.offsetTop - 140) setActive(sec.id)
+      let current = ''
+      document.querySelectorAll('main section[id]').forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 140) current = sec.id
       })
+      setActive(current)
     }
-    window.addEventListener('scroll', onScroll)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
-        ${scrolled ? 'py-3 bg-[#050810]/90 border-b border-[rgba(0,210,255,0.12)]' : 'py-5'}
-        backdrop-blur-xl`}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 backdrop-blur-xl transition-all duration-300 ${
+        scrolled ? 'border-b border-line bg-canvas/85 py-3' : 'py-5'
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between">
-
-       
-        <a href="#hero" className="font-mono text-[#00d2ff] text-base tracking-widest">
-          LC<span className="text-muted">.dev</span>
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 sm:px-8">
+        <a href="#home" className="font-display text-xl font-extrabold tracking-tight">
+          {profile.firstName}<span className="text-accent">.</span>
         </a>
 
-      
-        <ul className="hidden md:flex gap-8">
-          {links.map(l => (
+        <ul className="hidden items-center gap-8 md:flex">
+          {navLinks.map(l => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className={`font-mono text-xs tracking-widest uppercase relative transition-colors duration-200
-                  group ${active === l.href.slice(1) ? 'text-[#00d2ff]' : 'text-muted hover:text-[#00d2ff]'}`}
+                className={`text-sm transition-colors ${
+                  active === l.href.slice(1) ? 'text-accent' : 'text-muted hover:text-ink'
+                }`}
               >
                 {l.label}
-                <span className={`absolute -bottom-1 left-0 h-px bg-[#00d2ff] transition-all duration-300
-                  ${active === l.href.slice(1) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </a>
             </li>
           ))}
         </ul>
 
-      
-        <div className="hidden md:flex items-center gap-2 font-mono text-[11px] text-[#00ff88] tracking-widest">
-          <span className="w-2 h-2 rounded-full bg-[#00ff88] shadow-[0_0_8px_#00ff88] dot-pulse" />
-          Available
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            className="rounded-md p-2 text-ink md:hidden"
+            onClick={() => setOpen(o => !o)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+          >
+            {open ? <FaTimes size={20} /> : <FaBars size={20} />}
+          </button>
         </div>
+      </nav>
 
-       
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setOpen(o => !o)}
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-6 h-px bg-[#00d2ff] transition-all duration-300 ${open ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`block w-6 h-px bg-[#00d2ff] transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
-          <span className={`block w-6 h-px bg-[#00d2ff] transition-all duration-300 ${open ? '-rotate-45 -translate-y-2.5' : ''}`} />
-        </button>
-      </div>
-
-    
-      <div
-        className={`md:hidden transition-all duration-300 overflow-hidden
-          ${open ? 'max-h-96 border-t border-[rgba(0,210,255,0.12)]' : 'max-h-0'}`}
-      >
-        <ul className="flex flex-col bg-[#080d1a] px-6 py-4 gap-4">
-          {links.map(l => (
+      {open && (
+        <ul className="mt-3 flex flex-col gap-1 border-t border-line bg-canvas px-5 py-4 md:hidden">
+          {navLinks.map(l => (
             <li key={l.href}>
               <a
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="font-mono text-xs tracking-widest uppercase text-muted hover:text-[#00d2ff] transition-colors"
+                className="block rounded-md px-2 py-2.5 text-muted transition-colors hover:text-ink"
               >
                 {l.label}
               </a>
             </li>
           ))}
-          <li className="flex items-center gap-2 font-mono text-[11px] text-[#00ff88] tracking-widest pt-2 border-t border-[rgba(0,210,255,0.1)]">
-            <span className="w-2 h-2 rounded-full bg-[#00ff88] shadow-[0_0_8px_#00ff88] dot-pulse" />
-            Available for Opportunities
-          </li>
         </ul>
-      </div>
-    </nav>
+      )}
+    </header>
   )
 }
