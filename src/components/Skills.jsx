@@ -7,7 +7,7 @@ export default function Skills() {
     <CursorGlow
       as="section"
       id="skills"
-      className="overflow-hidden px-5 py-24 sm:px-8"
+      className="overflow-hidden px-5 py-16 sm:px-8 sm:py-24"
     >
       <div className="mx-auto max-w-6xl">
         <SectionHeader

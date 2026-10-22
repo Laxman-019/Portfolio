@@ -9,12 +9,12 @@ const facts = [
 
 export default function About() {
   return (
-    <section id="about" className="px-5 py-24 sm:px-8">
+    <section id="about" className="px-5 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeader title="Building things from front end to data" />
 
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
-          <div className="max-w-xl space-y-5 text-lg leading-relaxed text-muted">
+        <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
+          <div className="max-w-xl space-y-5 text-base leading-relaxed text-muted sm:text-lg">
             <p>
               I&rsquo;m a final-year Computer Science student from Cuttack who likes
               building things end to end: a React interface, a backend that holds up,
@@ -26,7 +26,7 @@ export default function About() {
             <p>Away from the keyboard, you&rsquo;ll usually find me reading, solving Sudoku or listening to music.</p>
           </div>
 
-          <dl className="space-y-6 border-l border-line pl-8">
+          <dl className="space-y-6 border-t border-line pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
             {facts.map(f => (
               <div key={f.label}>
                 <dt className="text-sm text-muted">{f.label}</dt>

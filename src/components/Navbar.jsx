@@ -25,7 +25,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 backdrop-blur-xl transition-all duration-300 ${
-        scrolled ? 'border-b border-line bg-canvas/85 py-3' : 'py-5'
+        scrolled || open ? 'border-b border-line bg-canvas/95 py-3' : 'py-5'
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 sm:px-8">
@@ -51,7 +51,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <button
-            className="rounded-md p-2 text-ink md:hidden"
+            className="flex size-10 items-center justify-center rounded-full text-ink md:hidden"
             onClick={() => setOpen(o => !o)}
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
@@ -68,7 +68,7 @@ export default function Navbar() {
               <a
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-2 py-2.5 text-muted transition-colors hover:text-ink"
+                className="block rounded-md px-2 py-3 text-base text-muted transition-colors hover:text-ink"
               >
                 {l.label}
               </a>

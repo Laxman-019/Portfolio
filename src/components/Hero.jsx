@@ -11,7 +11,7 @@ const title = `Hi, I\u2019m ${profile.name}`
 
 export default function Hero() {
   return (
-    <section id="home" className="flex min-h-screen items-center px-5 pb-16 pt-32 sm:px-8">
+    <section id="home" className="flex min-h-svh items-center px-5 pb-16 pt-28 sm:px-8 sm:pt-32">
       <div className="mx-auto w-full max-w-6xl">
         <p
           className="rise inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-4 py-1.5 text-sm text-muted"
@@ -30,7 +30,7 @@ export default function Hero() {
         </h1>
 
         <p
-          className="rise mt-7 max-w-xl text-lg leading-relaxed text-muted"
+          className="rise mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
           style={{ '--i': 2 }}
         >
           I build web apps, AI chatbots and full-stack platforms, and I&rsquo;m learning
@@ -79,13 +79,13 @@ export default function Hero() {
         </div>
 
         <dl
-          className="rise mt-14 flex flex-wrap gap-x-14 gap-y-6 border-t border-line pt-8"
+          className="rise mt-12 grid grid-cols-3 gap-4 border-t border-line pt-8 sm:mt-14 sm:flex sm:flex-wrap sm:gap-x-14 sm:gap-y-6"
           style={{ '--i': 4 }}
         >
           {stats.map(s => (
             <div key={s.label}>
-              <dd className="font-display text-4xl font-extrabold">{s.value}</dd>
-              <dt className="mt-1 text-sm text-muted">{s.label}</dt>
+              <dd className="font-display text-3xl font-extrabold sm:text-4xl">{s.value}</dd>
+              <dt className="mt-1 text-xs text-muted sm:text-sm">{s.label}</dt>
             </div>
           ))}
         </dl>

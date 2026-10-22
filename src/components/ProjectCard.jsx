@@ -13,10 +13,10 @@ function highlight(line) {
   return Array.from(line.matchAll(re), (m, i) => {
     const [text, comment, string, word] = m
     let cls = ''
-    if (comment) cls = 'text-emerald-300/60'
-    else if (string) cls = 'text-amber-200'
-    else if (word && KEYWORDS.has(word)) cls = 'text-violet-300'
-    else if (word && /^[A-Z]/.test(word)) cls = 'text-teal-300'
+    if (comment) cls = 'text-emerald-700/70 dark:text-emerald-300/60'
+    else if (string) cls = 'text-amber-700 dark:text-amber-200'
+    else if (word && KEYWORDS.has(word)) cls = 'text-violet-700 dark:text-violet-300'
+    else if (word && /^[A-Z]/.test(word)) cls = 'text-teal-700 dark:text-teal-300'
     return <span key={i} className={cls}>{text}</span>
   })
 }
@@ -27,17 +27,17 @@ function CodeWindow({ file, lines }) {
       aria-hidden="true"
       size={380}
       strength={16}
-      className="min-h-88 overflow-hidden rounded-[1.75rem] border border-line/70 bg-surface transition-colors hover:border-accent/40"
+      className="min-h-56 overflow-hidden rounded-3xl sm:min-h-88 sm:rounded-[1.75rem] border border-line/70 bg-surface transition-colors hover:border-accent/40"
     >
-      <div className="flex items-center gap-2.5 px-8 pt-8">
+      <div className="flex items-center gap-2.5 px-5 pt-6 sm:px-8 sm:pt-8">
         <span className="size-3 rounded-full bg-[#ff5f57]" />
         <span className="size-3 rounded-full bg-[#febc2e]" />
         <span className="size-3 rounded-full bg-[#28c840]" />
         <span className="ml-3 font-mono text-[11px] tracking-wide text-muted/70">{file}</span>
       </div>
-      <div className="overflow-x-auto px-8 pb-10 pt-8 font-mono text-sm leading-8 text-ink">
+      <div className="overflow-x-auto px-5 pb-8 pt-6 font-mono text-[13px] leading-7 text-ink sm:px-8 sm:pb-10 sm:pt-8 sm:text-sm sm:leading-8">
         {lines.map((line, i) => (
-          <div key={i} className="min-h-8 whitespace-pre">{highlight(line)}</div>
+          <div key={i} className="min-h-7 whitespace-pre sm:min-h-8">{highlight(line)}</div>
         ))}
       </div>
     </CursorGlow>
@@ -54,7 +54,7 @@ export default function ProjectCard({ project: p, reversed = false }) {
       <div>
         <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent/80">{p.category}</p>
         <h3 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl">{p.title}</h3>
-        <p className="mt-4 text-lg leading-relaxed text-muted">{p.desc}</p>
+        <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{p.desc}</p>
 
         <ul className="mt-6 space-y-3 text-ink/90">
           {p.highlights.map(h => (

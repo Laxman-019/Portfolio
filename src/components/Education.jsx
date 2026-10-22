@@ -3,7 +3,7 @@ import { education } from '../data/content'
 
 export default function Education() {
   return (
-    <section id="education" className="px-5 py-24 sm:px-8">
+    <section id="education" className="px-5 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeader title="Education" intro="My academic path, most recent first." />
 

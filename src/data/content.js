@@ -25,8 +25,9 @@ export const navLinks = [
 
 export const stats = [
   { value: '6', label: 'Projects built' },
-  { value: '5+', label: 'Technologies' },
+  { value: '12+', label: 'Technologies' },
   { value: '2026', label: 'Graduating' },
+  { value: '8.05', label: 'CGPA' },
 ]
 
 export const experiences = [

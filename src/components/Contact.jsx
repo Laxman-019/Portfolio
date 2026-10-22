@@ -57,14 +57,14 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="px-5 py-24 sm:px-8">
+    <section id="contact" className="px-5 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           title="Get in touch"
           intro="I'm open to internships, collaborations, or a good conversation about tech. Reach out through any channel below."
         />
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-20">
           <ul className="flex flex-col gap-3">
             {contactLinks.map(({ Icon, label, value, href }) => (
               <li key={label}>
@@ -89,11 +89,11 @@ export default function Contact() {
           <form ref={formRef} onSubmit={submit} className="flex flex-col gap-4">
             <div>
               <label htmlFor="name" className="mb-2 block text-sm text-muted">Your name</label>
-              <input id="name" name="name" value={form.name} onChange={handle} placeholder="Your full name" required className={fieldClass} />
+              <input id="name" name="name" autoComplete="name" value={form.name} onChange={handle} placeholder="Your full name" required className={fieldClass} />
             </div>
             <div>
               <label htmlFor="email" className="mb-2 block text-sm text-muted">Email address</label>
-              <input id="email" name="email" type="email" value={form.email} onChange={handle} placeholder="you@example.com" required className={fieldClass} />
+              <input id="email" name="email" type="email" autoComplete="email" value={form.email} onChange={handle} placeholder="you@example.com" required className={fieldClass} />
             </div>
             <div>
               <label htmlFor="message" className="mb-2 block text-sm text-muted">Message</label>
@@ -101,7 +101,7 @@ export default function Contact() {
             </div>
 
             {error && (
-              <p role="alert" className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2.5 text-sm text-red-300">
+              <p role="alert" className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2.5 text-sm text-red-700 dark:text-red-300">
                 {error}
               </p>
             )}
