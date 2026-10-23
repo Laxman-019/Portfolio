@@ -27,7 +27,7 @@ function CodeWindow({ file, lines }) {
       aria-hidden="true"
       size={380}
       strength={16}
-      className="min-h-56 overflow-hidden rounded-3xl sm:min-h-88 sm:rounded-[1.75rem] border border-line/70 bg-surface transition-colors hover:border-accent/40"
+      className="min-h-56 overflow-hidden rounded-[1.5rem] sm:min-h-88 sm:rounded-[1.75rem] border border-line/70 bg-surface transition-colors hover:border-accent/40"
     >
       <div className="flex items-center gap-2.5 px-5 pt-6 sm:px-8 sm:pt-8">
         <span className="size-3 rounded-full bg-[#ff5f57]" />
@@ -46,12 +46,12 @@ function CodeWindow({ file, lines }) {
 
 export default function ProjectCard({ project: p, reversed = false }) {
   return (
-    <article className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-      <div className={reversed ? 'lg:order-2' : ''}>
+    <article className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className={`min-w-0 ${reversed ? 'lg:order-2' : ''}`}>
         <CodeWindow file={p.file} lines={p.snippet} />
       </div>
 
-      <div>
+      <div className="min-w-0">
         <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent/80">{p.category}</p>
         <h3 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl">{p.title}</h3>
         <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{p.desc}</p>

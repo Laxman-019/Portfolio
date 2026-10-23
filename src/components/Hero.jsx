@@ -79,7 +79,7 @@ export default function Hero() {
         </div>
 
         <dl
-          className="rise mt-12 grid grid-cols-3 gap-4 border-t border-line pt-8 sm:mt-14 sm:flex sm:flex-wrap sm:gap-x-14 sm:gap-y-6"
+          className="rise mt-12 grid grid-cols-2 gap-x-4 gap-y-6 border-t border-line pt-8 sm:mt-14 sm:flex sm:flex-wrap sm:gap-x-14 sm:gap-y-6"
           style={{ '--i': 4 }}
         >
           {stats.map(s => (
