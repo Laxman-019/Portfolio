@@ -1,5 +1,6 @@
 import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa'
 import { profile, stats } from '../data/content'
+import LastPlayed from './LastPlayed'
 
 const socials = [
   { label: 'GitHub', href: profile.github, Icon: FaGithub },
@@ -37,7 +38,12 @@ export default function Hero() {
           to turn data into models that predict things. Based in Cuttack, graduating in 2026.
         </p>
 
-        <div className="rise mt-9 flex flex-wrap items-center gap-4" style={{ '--i': 3 }}>
+        {/* Last.fm "last played" pill: hidden automatically when there is no track */}
+        <div className="rise mt-6 empty:hidden" style={{ '--i': 3 }}>
+          <LastPlayed />
+        </div>
+
+        <div className="rise mt-9 flex flex-wrap items-center gap-4" style={{ '--i': 4 }}>
           <a
             href="#projects"
             className="rounded-full bg-accent px-7 py-3 font-medium text-canvas transition-colors hover:bg-ink"
@@ -80,7 +86,7 @@ export default function Hero() {
 
         <dl
           className="rise mt-12 grid grid-cols-2 gap-x-4 gap-y-6 border-t border-line pt-8 sm:mt-14 sm:flex sm:flex-wrap sm:gap-x-14 sm:gap-y-6"
-          style={{ '--i': 4 }}
+          style={{ '--i': 5 }}
         >
           {stats.map(s => (
             <div key={s.label}>

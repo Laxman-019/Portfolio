@@ -61,16 +61,19 @@ export default function Chatbot() {
         />
       )}
 
-      {/* Launcher: sits above the bottom island on phones */}
+      {/* Launcher: icon only, the label slides out on hover or keyboard focus (desktop).
+          Sits above the bottom island on phones. */}
       <button
         onClick={() => setOpen(o => !o)}
         aria-expanded={open}
         aria-controls="chat-panel"
         aria-label={open ? 'Close chat' : 'Ask about Laxman'}
-        className="fixed bottom-24 right-4 z-40 flex size-14 items-center justify-center gap-2 rounded-full bg-accent text-canvas shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)] transition-transform hover:scale-105 md:bottom-6 md:right-6 md:w-auto md:px-5"
+        className="group fixed bottom-24 right-4 z-40 flex size-14 items-center justify-center rounded-full bg-accent text-canvas shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)] transition-transform hover:scale-105 md:bottom-6 md:right-6 md:w-auto md:min-w-14 md:px-4"
       >
         {open ? <FiX size={22} /> : <FiMessageCircle size={22} />}
-        <span className="hidden font-medium md:inline">{open ? 'Close' : 'Ask about Laxman'}</span>
+        <span className="hidden overflow-hidden whitespace-nowrap font-medium opacity-0 transition-all duration-300 md:block md:max-w-0 md:group-hover:ml-2 md:group-hover:max-w-44 md:group-hover:opacity-100 md:group-focus-visible:ml-2 md:group-focus-visible:max-w-44 md:group-focus-visible:opacity-100">
+          {open ? 'Close' : 'Ask about Laxman'}
+        </span>
       </button>
 
       {/* Panel: bottom sheet on phones, floating window on desktop */}
