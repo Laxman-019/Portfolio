@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { FaQuoteLeft, FaBookOpen, FaThLarge, FaMusic } from 'react-icons/fa'
 import SectionHeader from './SectionHeader'
+import LastPlayed from './LastPlayed'
 
 const hobbies = [
   {
@@ -22,6 +23,7 @@ const hobbies = [
     Icon: FaMusic,
     title: 'Music',
     text: 'Usually something playing in the background.',
+    widget: true,
   },
 ]
 
@@ -86,7 +88,7 @@ export default function BeyondCode() {
             aria-label="Hobbies, swipe to browse"
             className="-mx-5 flex snap-x snap-mandatory scroll-pl-5 gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {hobbies.map(({ Icon, title, text }, i) => {
+            {hobbies.map(({ Icon, title, text, widget }, i) => {
               const isActive = i === active
               return (
                 <li
@@ -120,6 +122,11 @@ export default function BeyondCode() {
                   <div className="relative">
                     <h3 className="font-display text-3xl font-extrabold leading-tight">{title}</h3>
                     <p className="mt-3 text-base leading-relaxed text-muted">{text}</p>
+                    {widget && (
+                      <div className="mt-4">
+                        <LastPlayed />
+                      </div>
+                    )}
                   </div>
                 </li>
               )
@@ -147,7 +154,7 @@ export default function BeyondCode() {
 
         {/* Tablet and desktop: the card grid */}
         <ul className="hidden gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-4">
-          {hobbies.map(({ Icon, title, text }) => (
+          {hobbies.map(({ Icon, title, text, widget }) => (
             <li
               key={title}
               className="rounded-2xl border border-line bg-surface/80 p-7 text-center backdrop-blur-sm transition-colors hover:border-accent/60"
@@ -157,6 +164,11 @@ export default function BeyondCode() {
               </span>
               <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
               <p className="mt-2 leading-relaxed text-muted">{text}</p>
+              {widget && (
+                <div className="mt-4 flex justify-center">
+                  <LastPlayed />
+                </div>
+              )}
             </li>
           ))}
         </ul>
