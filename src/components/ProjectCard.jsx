@@ -27,7 +27,7 @@ function CodeWindow({ file, lines }) {
       aria-hidden="true"
       size={380}
       strength={16}
-      className="min-h-56 overflow-hidden rounded-[1.5rem] sm:min-h-88 sm:rounded-[1.75rem] border border-line/70 bg-surface transition-colors hover:border-accent/40"
+      className="min-h-56 overflow-hidden rounded-3xl sm:min-h-88 sm:rounded-[1.75rem] border border-line/70 bg-surface transition-colors hover:border-accent/40"
     >
       <div className="flex items-center gap-2.5 px-5 pt-6 sm:px-8 sm:pt-8">
         <span className="size-3 rounded-full bg-[#ff5f57]" />
@@ -35,9 +35,9 @@ function CodeWindow({ file, lines }) {
         <span className="size-3 rounded-full bg-[#28c840]" />
         <span className="ml-3 font-mono text-[11px] tracking-wide text-muted/70">{file}</span>
       </div>
-      <div className="overflow-x-auto px-5 pb-8 pt-6 font-mono text-[13px] leading-7 text-ink sm:px-8 sm:pb-10 sm:pt-8 sm:text-sm sm:leading-8">
+      <div className="overflow-x-auto px-5 pb-8 pt-6 font-mono text-[13px] leading-7 text-ink sm:px-8 sm:pb-10 sm:pt-8 sm:text-sm sm:leading-8 lg:overflow-x-hidden">
         {lines.map((line, i) => (
-          <div key={i} className="min-h-7 whitespace-pre sm:min-h-8">{highlight(line)}</div>
+          <div key={i} className="min-h-7 whitespace-pre sm:min-h-8 lg:whitespace-pre-wrap lg:wrap-break-word">{highlight(line)}</div>
         ))}
       </div>
     </CursorGlow>
