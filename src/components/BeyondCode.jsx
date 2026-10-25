@@ -1,13 +1,18 @@
 import { useRef, useState } from 'react'
-import { FaQuoteLeft, FaBookOpen, FaThLarge, FaMusic } from 'react-icons/fa'
+import { FaGamepad, FaFilm, FaBookOpen, FaThLarge, FaMusic } from 'react-icons/fa'
 import SectionHeader from './SectionHeader'
 import LastPlayed from './LastPlayed'
 
 const hobbies = [
   {
-    Icon: FaQuoteLeft,
-    title: 'Content creation',
-    text: 'Turning ideas into short posts and quotes.',
+    Icon: FaGamepad,
+    title: 'Gaming',
+    text: 'Playing, and building my own multiplayer games.',
+  },
+  {
+    Icon: FaFilm,
+    title: 'Movies & series',
+    text: 'Always one more episode.',
   },
   {
     Icon: FaBookOpen,
@@ -111,7 +116,7 @@ export default function BeyondCode() {
                   />
 
                   <div className="relative flex items-center justify-between">
-                    <span className="grid size-12 place-items-center rounded-2xl bg-accent text-canvas">
+                    <span className="grid size-12 place-items-center rounded-2xl bg-accent-deep text-white">
                       <Icon size={20} />
                     </span>
                     <span className="font-mono text-xs text-muted">
@@ -152,12 +157,12 @@ export default function BeyondCode() {
           </div>
         </div>
 
-        {/* Tablet and desktop: the card grid */}
-        <ul className="hidden gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+        {/* Tablet and desktop: wrapping card layout, any leftover cards stay centred */}
+        <ul className="hidden flex-wrap justify-center gap-5 sm:flex">
           {hobbies.map(({ Icon, title, text, widget }) => (
             <li
               key={title}
-              className="rounded-2xl border border-line bg-surface/80 p-7 text-center backdrop-blur-sm transition-colors hover:border-accent/60"
+              className="w-[calc(50%-0.625rem)] rounded-2xl border border-line bg-surface/80 p-7 text-center backdrop-blur-sm transition-colors hover:border-accent/60 lg:w-[calc(33.333%-0.834rem)]"
             >
               <span className="mx-auto flex size-14 items-center justify-center rounded-full bg-accent/10 text-accent">
                 <Icon size={22} />

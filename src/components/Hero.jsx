@@ -46,7 +46,7 @@ export default function Hero() {
         <div className="rise mt-9 flex flex-wrap items-center gap-4" style={{ '--i': 4 }}>
           <a
             href="#projects"
-            className="rounded-full bg-accent px-7 py-3 font-medium text-canvas transition-colors hover:bg-ink"
+            className="rounded-full bg-accent-deep px-7 py-3 font-medium text-white transition-colors hover:bg-accent"
           >
             View projects
           </a>

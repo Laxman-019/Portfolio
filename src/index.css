@@ -10,7 +10,8 @@
   --color-line: #261c20;
   --color-ink: #f5f0f1;
   --color-muted: #a8a2a5;
-  --color-accent: #e5405e;
+  --color-accent: #e0314f;
+  --color-accent-deep: #6b0f26;
 
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
@@ -32,6 +33,7 @@
   --color-ink: #1a1214;
   --color-muted: #6b5d61;
   --color-accent: #9f1239;
+  --color-accent-deep: #9f1239;
 }
 
 :root[data-theme="dark"] { color-scheme: dark; }
