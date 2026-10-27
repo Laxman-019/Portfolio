@@ -10,10 +10,12 @@ import BeyondCode from './components/BeyondCode'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Chatbot from './components/Chatbot'
+import ScrollProgress from './components/ScrollProgress'
 
 export default function App() {
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />
